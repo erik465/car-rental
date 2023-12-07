@@ -20,6 +20,13 @@ export const ImageContainer = styled.div`
   width: 274px;
   height: 268px;
   border-radius: 14px;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+  }
 `;
 
 export const MainInfo = styled.div`
