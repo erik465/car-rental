@@ -1,11 +1,14 @@
 import React from "react";
 import CatalogFilters from "../../components/CatalogFilters/CatalogFilters";
+import CarList from "../../components/CarList/CarList";
+import { StyledContainer } from "./CatalogPage.styled";
 
 const CatalogPage = () => {
   return (
-    <div>
+    <StyledContainer>
       <CatalogFilters />
-    </div>
+      <CarList />
+    </StyledContainer>
   );
 };
 

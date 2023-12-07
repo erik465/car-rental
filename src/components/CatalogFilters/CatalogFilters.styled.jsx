@@ -36,6 +36,12 @@ export const StyledSubmit = styled.button`
   line-height: 20px;
   outline: none;
   border: none;
+
+  transition: 1s background;
+
+  &:hover {
+    background: #0b44cd;
+  }
 `;
 
 export const DoubleInput = styled.div`

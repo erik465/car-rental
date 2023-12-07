@@ -7,7 +7,21 @@ export const fetchCars = createAsyncThunk(
   "cars/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/cars");
+      const response = await axios.get("/cars", {
+        params: { page: 1, limit: 12 },
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchBrands = createAsyncThunk(
+  "filters/fetchBrands",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get("/brands");
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

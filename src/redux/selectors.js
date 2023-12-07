@@ -1,6 +1,8 @@
-export const selectCars = (state) => state.tasks.items;
+export const selectCars = (state) => state.cars.items;
 
-export const selectBrandFilter = (state) => state.filters.brand;
+export const selectBrands = (state) => state.filters.brands;
+
+export const selectBrandFilter = (state) => state.filters.selectedBrand;
 
 export const selectPriceFilter = (state) => state.filters.price;
 

@@ -6,21 +6,12 @@ import {
   DoubleInput,
   StyledSubmit,
 } from "./CatalogFilters.styled";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Select from "react-select";
+import { useSelector } from "react-redux";
+import { selectBrands } from "../../redux/selectors";
 
 const CatalogFilters = () => {
-  const [brands, setBrands] = useState([]);
-  useEffect(() => {
-    async function fetchBrands() {
-      const response = await axios.get(
-        "https://6511877a829fa0248e404647.mockapi.io/api/brands"
-      );
-      setBrands(response.data);
-    }
-    fetchBrands();
-  }, []);
+  const brands = useSelector(selectBrands);
   return (
     <StyledContainer>
       <StyledForm>

@@ -1,5 +1,8 @@
 import React, { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchCars, fetchBrands } from "../redux/operations";
 
 const Homepage = lazy(() => import("../pages/Homepage/HomePage"));
 const CatalogPage = lazy(() => import("../pages/CatalogPage/CatalogPage"));
@@ -8,6 +11,12 @@ const FavouritesPage = lazy(() =>
 );
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCars());
+    dispatch(fetchBrands());
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />

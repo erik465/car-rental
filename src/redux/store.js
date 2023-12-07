@@ -4,7 +4,7 @@ import { filtersReducer } from "./filtersSlice";
 
 export const store = configureStore({
   reducer: {
-    carsReducer,
-    filtersReducer,
+    cars: carsReducer,
+    filters: filtersReducer,
   },
 });
