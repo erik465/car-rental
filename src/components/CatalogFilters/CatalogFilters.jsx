@@ -1,4 +1,3 @@
-import React from "react";
 import {
   StyledForm,
   StyledContainer,
@@ -7,17 +6,40 @@ import {
   StyledSubmit,
 } from "./CatalogFilters.styled";
 import Select from "react-select";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectBrands } from "../../redux/selectors";
+import {
+  setBrandFilter,
+  setPriceFilter,
+  setMileageMinFilter,
+  setMileageMaxFilter,
+} from "../../redux/filtersSlice";
 
 const CatalogFilters = () => {
   const brands = useSelector(selectBrands);
+  const dispatch = useDispatch();
+
+  const handleBrandChange = (selectedOption) => {
+    dispatch(setBrandFilter(selectedOption.value));
+  };
+
+  const handlePriceChange = (selectedOption) => {
+    dispatch(setPriceFilter(selectedOption.value));
+  };
+  const handleMileageMaxChange = (value) => {
+    dispatch(setMileageMaxFilter(value));
+  };
+  const handleMileageMinChange = (value) => {
+    dispatch(setMileageMinFilter(value));
+  };
+
   return (
     <StyledContainer>
       <StyledForm>
         <StyledLabel>
           Car brand
           <Select
+            onChange={handleBrandChange}
             components={{
               IndicatorSeparator: () => null,
             }}
@@ -52,6 +74,7 @@ const CatalogFilters = () => {
             components={{
               IndicatorSeparator: () => null,
             }}
+            onChange={handlePriceChange}
             placeholder={"To $"}
             styles={{
               control: (baseStyles, state) => ({
@@ -85,8 +108,16 @@ const CatalogFilters = () => {
         <StyledLabel>
           Car mileage / km
           <DoubleInput>
-            <input type="number" min={0} />
-            <input type="number" min={0} />
+            <input
+              type="number"
+              min={0}
+              onChange={(e) => handleMileageMinChange(e.target.value)}
+            />
+            <input
+              type="number"
+              min={0}
+              onChange={(e) => handleMileageMaxChange(e.target.value)}
+            />
           </DoubleInput>
         </StyledLabel>
         <StyledSubmit>Search</StyledSubmit>

@@ -7,6 +7,8 @@ const carsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    page: 1,
+    isLastPage: false,
   },
   extraReducers: (builder) => {
     builder
@@ -17,7 +19,9 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = [...state.items, ...action.payload];
+        state.page++;
+        state.isLastPage = action.payload.length === 12 ? false : true;
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.isLoading = false;

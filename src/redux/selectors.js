@@ -1,5 +1,9 @@
 export const selectCars = (state) => state.cars.items;
 
+export const selectPage = (state) => state.cars.page;
+
+export const selectIsLastPage = (state) => state.cars.isLastPage;
+
 export const selectBrands = (state) => state.filters.brands;
 
 export const selectBrandFilter = (state) => state.filters.selectedBrand;

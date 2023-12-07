@@ -49,7 +49,7 @@ const filtersSlice = createSlice({
 });
 
 export const {
-  setStatusFilter,
+  setBrandFilter,
   setPriceFilter,
   setMileageMinFilter,
   setMileageMaxFilter,
