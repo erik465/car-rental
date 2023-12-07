@@ -14,7 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCars());
+    dispatch(fetchCars(1));
     dispatch(fetchBrands());
   }, [dispatch]);
   return (
