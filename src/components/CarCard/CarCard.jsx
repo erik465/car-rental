@@ -27,7 +27,7 @@ const CarCard = ({ data }) => {
         <p>{data.type}</p>
         <p>{data.model}</p>
         <p>{data.id}</p>
-        <p>{data.accessories[0]}</p>
+        <p>{data.functionalities[0]}</p>
       </FeaturesText>
       <StyledButton>Learn More</StyledButton>
     </StyledCard>
