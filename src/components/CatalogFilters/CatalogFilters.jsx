@@ -7,7 +7,15 @@ import {
 } from "./CatalogFilters.styled";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { selectBrands } from "../../redux/selectors";
+import { setCarsItems } from "../../redux/carsSlice";
+import {
+  selectBrands,
+  selectCars,
+  selectBrandFilter,
+  selectPriceFilter,
+  selectMileageMinFilter,
+  selectMileageMaxFilter,
+} from "../../redux/selectors";
 import {
   setBrandFilter,
   setPriceFilter,
@@ -18,6 +26,9 @@ import {
 const CatalogFilters = () => {
   const brands = useSelector(selectBrands);
   const dispatch = useDispatch();
+
+  const cars = useSelector(selectCars);
+  const brandFilter = useSelector(selectBrandFilter);
 
   const handleBrandChange = (selectedOption) => {
     dispatch(setBrandFilter(selectedOption.value));
@@ -31,6 +42,17 @@ const CatalogFilters = () => {
   };
   const handleMileageMinChange = (value) => {
     dispatch(setMileageMinFilter(value));
+  };
+
+  const changeFilters = (e) => {
+    //const priceFilter = useSelector(selectPriceFilter);
+    //const brandFilter = useSelector(selectBrandFilter);
+    //const brandFilter = useSelector(selectBrandFilter);
+    e.preventDefault();
+    console.log(brandFilter);
+    const filteredItems = cars.filter((car) => car.make === brandFilter);
+    console.log(filteredItems);
+    dispatch(setCarsItems(filteredItems));
   };
 
   return (
@@ -120,7 +142,7 @@ const CatalogFilters = () => {
             />
           </DoubleInput>
         </StyledLabel>
-        <StyledSubmit>Search</StyledSubmit>
+        <StyledSubmit onClick={(e) => changeFilters(e)}>Search</StyledSubmit>
       </StyledForm>
     </StyledContainer>
   );

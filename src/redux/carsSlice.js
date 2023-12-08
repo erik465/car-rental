@@ -10,6 +10,11 @@ const carsSlice = createSlice({
     page: 1,
     isLastPage: false,
   },
+  reducers: {
+    setCarsItems(state, action) {
+      state.items = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCars.pending, (state, action) => {
@@ -29,5 +34,7 @@ const carsSlice = createSlice({
       });
   },
 });
+
+export const { setCarsItems } = carsSlice.actions;
 
 export const carsReducer = carsSlice.reducer;
