@@ -168,6 +168,7 @@ export const ModalDescription = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.42;
+  margin-top: 0;
 `;
 
 export const ModalAccessories = styled.div`
