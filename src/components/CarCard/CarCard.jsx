@@ -63,6 +63,7 @@ const CarCard = ({ data, index }) => {
       );
     } else {
       setIsFavourite(false);
+      console.log(data);
       const updatedFavorites = JSON.parse(
         localStorage.getItem("favourites")
       ).filter((obj) => obj !== data);
