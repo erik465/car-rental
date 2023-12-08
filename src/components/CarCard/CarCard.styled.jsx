@@ -68,7 +68,9 @@ export const FeaturesText = styled.div`
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
-    padding: 0 6px;
+    margin-right: 6px;
+    padding: 0;
+    padding-right: 6px;
     border-right: 1px solid rgba(18, 20, 23, 0.5);
   }
 
@@ -111,7 +113,7 @@ export const StyledModalContainer = styled.div`
   }
   img {
     align-self: center;
-    width: 469px;
+    width: 100%;
     border-radius: 14px;
     margin-bottom: 14px;
   }
@@ -144,7 +146,9 @@ export const ModalFeaturesText = styled.p`
     font-weight: 400;
     line-height: 1.5;
     margin: 0;
-    padding: 0 6px;
+    margin-right: 6px;
+    padding: 0;
+    padding-right: 6px;
     border-right: 1px solid rgba(18, 20, 23, 0.5);
   }
 
@@ -164,8 +168,6 @@ export const ModalDescription = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 1.42;
-  margin-top: 0;
-  margin-bottom: 24px;
 `;
 
 export const ModalAccessories = styled.div`
@@ -191,12 +193,72 @@ export const ModalAccessoriesText = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
-    margin: 0 !important;
-    padding: 0 6px;
+    margin: 0;
+    margin-bottom: 0 !important;
+    margin-right: 6px;
+    padding: 0;
+    padding-right: 6px;
     border-right: 1px solid rgba(18, 20, 23, 0.5);
   }
 
   p:last-of-type {
     border-right: none;
   }
+`;
+
+export const StyledModal = styled(Modal)`
+  position: absolute;
+  border-radius: 14px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 999;
+  }
+`;
+
+export const RentalConditions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 461px;
+  margin-bottom: 24px;
+`;
+
+export const Condition = styled.div`
+  padding: 7px 14px;
+  border-radius: 35px;
+  background: #f9f9f9;
+  color: #363535;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.24px;
+
+  span {
+    color: #3470ff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+`;
+
+export const StyledContactButton = styled.button`
+  padding: 12px 50px;
+  border-radius: 12px;
+  background: #3470ff;
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.42;
+  border: none;
+  outline: none;
+  max-width: 178px;
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyledCard,
   StyledHeading,
@@ -12,7 +12,10 @@ import {
   ModalDescription,
   ModalAccessories,
   ModalAccessoriesText,
-  StyledModalButton,
+  StyledModal,
+  RentalConditions,
+  Condition,
+  StyledContactButton,
 } from "./CarCard.styled";
 import Modal from "react-modal";
 
@@ -22,13 +25,20 @@ const CarCard = ({ data, index }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
-    console.log("open modal");
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [modalIsOpen]);
 
   return (
     <>
@@ -69,7 +79,7 @@ const CarCard = ({ data, index }) => {
         </FeaturesText>
         <StyledButton onClick={() => openModal()}>Learn More</StyledButton>
       </StyledCard>
-      <Modal
+      <StyledModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Car Modal"
@@ -136,8 +146,20 @@ const CarCard = ({ data, index }) => {
             </ModalAccessoriesText>
           </ModalAccessories>
           <p>Rental Conditions: </p>
+          <RentalConditions>
+            {data.rentalConditions.split("\n").map((condition) => {
+              return <Condition>{condition}</Condition>;
+            })}
+            <Condition>
+              Mileage : <span>{data.mileage}</span>
+            </Condition>
+            <Condition>
+              Price : <span>{data.rentalPrice}</span>
+            </Condition>
+          </RentalConditions>
+          <StyledContactButton>Rental Car</StyledContactButton>
         </StyledModalContainer>
-      </Modal>
+      </StyledModal>
     </>
   );
 };
