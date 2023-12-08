@@ -17,6 +17,20 @@ export const fetchCars = createAsyncThunk(
   }
 );
 
+export const fetchFilteredCars = createAsyncThunk(
+  "cars/fetchFiltered",
+  async (params, thunkAPI) => {
+    try {
+      const response = await axios.get("/adverts", {
+        params: params,
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const fetchBrands = createAsyncThunk(
   "filters/fetchBrands",
   async (_, thunkAPI) => {

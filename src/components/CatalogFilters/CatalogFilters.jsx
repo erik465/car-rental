@@ -7,7 +7,7 @@ import {
 } from "./CatalogFilters.styled";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { setCarsItems } from "../../redux/carsSlice";
+import { fetchFilteredCars } from "../../redux/operations";
 import {
   selectBrands,
   selectCars,
@@ -27,8 +27,9 @@ const CatalogFilters = () => {
   const brands = useSelector(selectBrands);
   const dispatch = useDispatch();
 
-  const cars = useSelector(selectCars);
   const brandFilter = useSelector(selectBrandFilter);
+  const priceFilter = useSelector(selectPriceFilter);
+  const mileageFilter = useSelector(selectMileageMinFilter);
 
   const handleBrandChange = (selectedOption) => {
     dispatch(setBrandFilter(selectedOption.value));
@@ -45,14 +46,14 @@ const CatalogFilters = () => {
   };
 
   const changeFilters = (e) => {
-    //const priceFilter = useSelector(selectPriceFilter);
-    //const brandFilter = useSelector(selectBrandFilter);
-    //const brandFilter = useSelector(selectBrandFilter);
     e.preventDefault();
-    console.log(brandFilter);
-    const filteredItems = cars.filter((car) => car.make === brandFilter);
-    console.log(filteredItems);
-    dispatch(setCarsItems(filteredItems));
+    dispatch(
+      fetchFilteredCars({
+        page: 1,
+        limit: 12,
+        make: brandFilter,
+      })
+    );
   };
 
   return (

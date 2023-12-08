@@ -13,22 +13,12 @@ import { fetchCars } from "../../redux/operations";
 import { useEffect } from "react";
 import { nanoid } from "nanoid";
 
-const getFilteredCars = (cars, filters) => {
-  if (filters.brand) {
-    const filteredArray = cars.filter((car) => car.make === filters.brand);
-    return filteredArray;
-  }
-  return cars;
-};
-
 const CarList = () => {
   const cars = useSelector(selectCars);
   const page = useSelector(selectPage);
   const brandFilter = useSelector(selectBrandFilter);
   const isLastPage = useSelector(selectIsLastPage);
   const dispatch = useDispatch();
-
-  const visibleCars = getFilteredCars(cars, { brand: brandFilter });
 
   useEffect(() => {
     dispatch(fetchCars(1));
@@ -40,8 +30,8 @@ const CarList = () => {
   return (
     <StyledContainer>
       <StyledList>
-        {visibleCars.map((car, index) => {
-          return <CarCard index={index} key={nanoid()} data={car} />;
+        {cars.map((car, index) => {
+          return <CarCard key={nanoid()} index={index} data={car} />;
         })}
       </StyledList>
       {!isLastPage ? (
