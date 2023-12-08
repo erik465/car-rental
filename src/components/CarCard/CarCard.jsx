@@ -40,6 +40,12 @@ const CarCard = ({ data, index }) => {
     }
   }, [modalIsOpen]);
 
+  const convertToDecimal = (number) => {
+    let resultString = parseInt(number / 1000);
+    resultString += "," + (number % 1000);
+    return resultString;
+  };
+
   return (
     <>
       <StyledCard>
@@ -121,7 +127,7 @@ const CarCard = ({ data, index }) => {
         <StyledModalContainer>
           <img src={data.img ? data.img : data.photoLink} />
           <ModalHeading>
-            {data.make} <span>{data.model}</span> ,{data.year}
+            {data.make} <span>{data.model}</span>, {data.year}
           </ModalHeading>
           <ModalFeaturesText>
             <p>{data.address.split(",")[1]}</p>
@@ -151,7 +157,7 @@ const CarCard = ({ data, index }) => {
               return <Condition>{condition}</Condition>;
             })}
             <Condition>
-              Mileage : <span>{data.mileage}</span>
+              Mileage : <span>{convertToDecimal(data.mileage)}</span>
             </Condition>
             <Condition>
               Price : <span>{data.rentalPrice}</span>
