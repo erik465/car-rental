@@ -40,8 +40,8 @@ const CarList = () => {
   return (
     <StyledContainer>
       <StyledList>
-        {visibleCars.map((car) => {
-          return <CarCard key={nanoid()} data={car} />;
+        {visibleCars.map((car, index) => {
+          return <CarCard index={index} key={nanoid()} data={car} />;
         })}
       </StyledList>
       {!isLastPage ? (

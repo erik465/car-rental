@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
   width: 1184px;
-  margin: 150px auto;
+  margin: 150px auto 50px auto;
 `;
 
 export const StyledForm = styled.form`

@@ -7,7 +7,7 @@ export const fetchCars = createAsyncThunk(
   "cars/fetchAll",
   async (page, thunkAPI) => {
     try {
-      const response = await axios.get("/cars", {
+      const response = await axios.get("/adverts", {
         params: { page: page, limit: 12 },
       });
       return response.data;
