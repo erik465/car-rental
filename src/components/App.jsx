@@ -15,7 +15,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchBrands());
-    localStorage.setItem("favourites", []);
   }, [dispatch]);
   return (
     <Routes>
