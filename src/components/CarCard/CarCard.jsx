@@ -151,7 +151,7 @@ const CarCard = ({ data, index }) => {
               ))}
             </ModalAccessoriesText>
           </ModalAccessories>
-          <p>Rental Conditions: </p>
+          <p style={{ marginTop: 0 }}>Rental Conditions: </p>
           <RentalConditions>
             {data.rentalConditions.split("\n").map((condition) => {
               return <Condition>{condition}</Condition>;
