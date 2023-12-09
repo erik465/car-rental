@@ -3,6 +3,7 @@ import { StyledContainer, StyledHeading } from "./FavouritesPage.styled";
 import FavouritesList from "../../components/FavouritesList/FavouritesList";
 import { Suspense } from "react";
 import { NavLink } from "react-router-dom";
+
 const FavouritesPage = () => {
   return (
     <Suspense fallback={<p>Loading...</p>}>
