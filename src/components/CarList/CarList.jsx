@@ -5,20 +5,29 @@ import {
   selectCars,
   selectPage,
   selectIsLastPage,
-  selectBrandFilter,
 } from "../../redux/selectors";
 import { StyledList, StyledContainer, LoadMoreStyled } from "./CarList.styled";
 import { useDispatch } from "react-redux";
 import { fetchCars } from "../../redux/operations";
 import { useEffect } from "react";
 import { nanoid } from "nanoid";
+import { Suspense } from "react";
 
 const CarList = () => {
   const cars = useSelector(selectCars);
   const page = useSelector(selectPage);
-  const brandFilter = useSelector(selectBrandFilter);
   const isLastPage = useSelector(selectIsLastPage);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const favouritesList = localStorage.getItem("favourites")
+      ? localStorage.getItem("favourites")
+      : [];
+    console.log(favouritesList);
+    if (favouritesList.length === 0) {
+      localStorage.setItem("favourites", JSON.stringify([]));
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(fetchCars(1));
@@ -29,14 +38,16 @@ const CarList = () => {
   };
   return (
     <StyledContainer>
-      <StyledList>
-        {cars.map((car, index) => {
-          return <CarCard key={nanoid()} index={index} data={car} />;
-        })}
-      </StyledList>
-      {!isLastPage ? (
-        <LoadMoreStyled onClick={handlePageChange}>Load More</LoadMoreStyled>
-      ) : null}
+      <Suspense fallback={<div>Loading...</div>}>
+        <StyledList>
+          {cars.map((car, index) => {
+            return <CarCard index={index} data={car} key={nanoid()} />;
+          })}
+        </StyledList>
+        {!isLastPage ? (
+          <LoadMoreStyled onClick={handlePageChange}>Load More</LoadMoreStyled>
+        ) : null}
+      </Suspense>
     </StyledContainer>
   );
 };
