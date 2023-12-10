@@ -33,8 +33,8 @@ const CarList = () => {
   useEffect(() => {
     dispatch(setPage(1));
     dispatch(setCarsItems([]));
-    dispatch(fetchCars(page));
-  }, [dispatch, page]);
+    dispatch(fetchCars(1));
+  }, [dispatch]);
 
   const handlePageChange = () => {
     dispatch(fetchCars(page));
