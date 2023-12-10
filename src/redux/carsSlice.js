@@ -14,6 +14,9 @@ const carsSlice = createSlice({
     setCarsItems(state, action) {
       state.items = action.payload;
     },
+    setPage(state, action) {
+      state.page = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -48,6 +51,6 @@ const carsSlice = createSlice({
   },
 });
 
-export const { setCarsItems } = carsSlice.actions;
+export const { setCarsItems, setPage } = carsSlice.actions;
 
 export const carsReducer = carsSlice.reducer;

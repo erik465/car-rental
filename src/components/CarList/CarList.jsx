@@ -12,7 +12,7 @@ import { fetchCars } from "../../redux/operations";
 import { useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Suspense } from "react";
-import { setCarsItems } from "../../redux/carsSlice";
+import { setCarsItems, setPage } from "../../redux/carsSlice";
 
 const CarList = () => {
   const cars = useSelector(selectCars);
@@ -31,8 +31,9 @@ const CarList = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(setPage(1));
     dispatch(setCarsItems([]));
-    dispatch(fetchCars(1));
+    dispatch(fetchCars(page));
   }, [dispatch]);
 
   const handlePageChange = () => {
