@@ -2,19 +2,13 @@ import {
   StyledForm,
   StyledContainer,
   StyledLabel,
-  DoubleInput,
   StyledSubmit,
 } from "./CatalogFilters.styled";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFilteredCars } from "../../redux/operations";
 import { selectBrands, selectBrandFilter } from "../../redux/selectors";
-import {
-  setBrandFilter,
-  setPriceFilter,
-  setMileageMinFilter,
-  setMileageMaxFilter,
-} from "../../redux/filtersSlice";
+import { setBrandFilter } from "../../redux/filtersSlice";
 import { Suspense } from "react";
 
 const CatalogFilters = () => {
@@ -25,16 +19,6 @@ const CatalogFilters = () => {
 
   const handleBrandChange = (selectedOption) => {
     dispatch(setBrandFilter(selectedOption.value));
-  };
-
-  const handlePriceChange = (selectedOption) => {
-    dispatch(setPriceFilter(selectedOption.value));
-  };
-  const handleMileageMaxChange = (value) => {
-    dispatch(setMileageMaxFilter(value));
-  };
-  const handleMileageMinChange = (value) => {
-    dispatch(setMileageMinFilter(value));
   };
 
   const changeFilters = (e) => {
