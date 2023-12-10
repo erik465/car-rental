@@ -251,6 +251,7 @@ export const Condition = styled.div`
 `;
 
 export const StyledContactButton = styled.button`
+  display: block;
   padding: 12px 50px;
   border-radius: 12px;
   background: #3470ff;
@@ -262,4 +263,9 @@ export const StyledContactButton = styled.button`
   border: none;
   outline: none;
   max-width: 178px;
+  text-decoration: none;
+`;
+
+export const StyledLink = styled.a`
+  text-decoration: none !important;
 `;

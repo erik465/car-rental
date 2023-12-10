@@ -16,6 +16,7 @@ import {
   RentalConditions,
   Condition,
   StyledContactButton,
+  StyledLink,
 } from "./CarCard.styled";
 import Modal from "react-modal";
 
@@ -210,7 +211,9 @@ const CarCard = ({ data, index }) => {
               Price : <span>{data.rentalPrice}</span>
             </Condition>
           </RentalConditions>
-          <StyledContactButton>Rental Car</StyledContactButton>
+          <StyledLink href="tel:+380730000000">
+            <StyledContactButton>Rental Car</StyledContactButton>
+          </StyledLink>
         </StyledModalContainer>
       </StyledModal>
     </>

@@ -17,6 +17,7 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchBrands());
   }, [dispatch]);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>

@@ -12,6 +12,7 @@ import { fetchCars } from "../../redux/operations";
 import { useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Suspense } from "react";
+import { setCarsItems } from "../../redux/carsSlice";
 
 const CarList = () => {
   const cars = useSelector(selectCars);
@@ -30,6 +31,7 @@ const CarList = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(setCarsItems([]));
     dispatch(fetchCars(1));
   }, [dispatch]);
 

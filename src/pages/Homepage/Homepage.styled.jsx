@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
   margin: 0px auto;
 `;
 
-export const StyledHeading = styled.h2`
+export const StyledHeading = styled.h1`
   span {
     color: blue;
   }
@@ -20,4 +20,30 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  color: #fff;
+`;
+
+export const NavContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const ImageContainer = styled.div`
+  max-height: 700px;
+  max-width: 100%;
+  overflow: hidden;
+  border: 5px solid #3470ff;
+  border-radius: 30px;
+  margin-bottom: 40px;
+`;
+
+export const StyledImage = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  transition: 1s;
+
+  &:hover {
+    transform: scale(2);
+  }
 `;
