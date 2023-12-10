@@ -9,9 +9,9 @@ const FavouritesPage = () => {
     <Suspense fallback={<p>Loading...</p>}>
       <StyledContainer>
         <StyledHeading>
-          <NavLink to="/catalog">Back to catalog</NavLink>
           Your <span>Favourites</span> Page
         </StyledHeading>
+        <NavLink to="/catalog">Back to catalog</NavLink>
         <Suspense fallback={<p>Loading...</p>}>
           <FavouritesList />
         </Suspense>
