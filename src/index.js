@@ -9,7 +9,7 @@ import GlobalStyle from "./globalStyles";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   /*<React.StrictMode>*/
-  <BrowserRouter basename="https://car-rental-ukraine.netlify.app/">
+  <BrowserRouter>
     <Provider store={store}>
       <App />
       <GlobalStyle />
