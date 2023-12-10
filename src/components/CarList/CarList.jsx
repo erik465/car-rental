@@ -34,7 +34,7 @@ const CarList = () => {
     dispatch(setPage(1));
     dispatch(setCarsItems([]));
     dispatch(fetchCars(page));
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   const handlePageChange = () => {
     dispatch(fetchCars(page));
