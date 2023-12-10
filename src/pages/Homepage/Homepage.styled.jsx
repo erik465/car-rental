@@ -36,6 +36,9 @@ export const ImageContainer = styled.div`
   border: 5px solid #3470ff;
   border-radius: 30px;
   margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledImage = styled.img`
